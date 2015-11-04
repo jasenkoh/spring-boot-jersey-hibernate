@@ -15,16 +15,16 @@ import org.springframework.transaction.support.TransactionTemplate;
 import javax.sql.DataSource;
 import java.util.Properties;
 @Configuration
-@EnableJpaRepositories(basePackages = "com.jersey.persistence")
+@EnableJpaRepositories(basePackages = "com.jersey.persistance")
 public class SqlInitialization{
 
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl("jdbc:postgresql://127.0.0.1:5432/jersey-demo");
-        dataSource.setUsername("jasenko");
-        dataSource.setPassword("jasenko");
+        dataSource.setUrl("jdbc:postgresql://127.0.0.1:5432/jerseydemo");
+        dataSource.setUsername("sunny");
+        dataSource.setPassword("sunny");
         return dataSource;
     }
 
@@ -51,7 +51,7 @@ public class SqlInitialization{
         hibernateProperties.setProperty("hibernate.show_sql", "false");
         hibernateProperties.setProperty("hibernate.use_sql_comments", "false");
         hibernateProperties.setProperty("hibernate.format_sql", "false");
-        hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "false");
+        hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
 
         hibernateProperties.setProperty("hibernate.generate_statistics", "false");
 

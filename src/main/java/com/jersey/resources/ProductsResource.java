@@ -2,6 +2,7 @@ package com.jersey.resources;
 
 import com.jersey.persistance.ProductDao;
 import com.jersey.representations.Product;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,7 +21,7 @@ import java.util.List;
 @Component
 public class ProductsResource {
     private ProductDao productDao;
-    @Inject
+    @Autowired
     public ProductsResource(ProductDao productDao){
         this.productDao = productDao;
     }

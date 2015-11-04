@@ -4,6 +4,7 @@ package com.jersey.resources;
 import com.jersey.persistance.MemberDao;
 import com.jersey.persistance.ProductDao;
 import com.jersey.representations.Member;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,7 +23,7 @@ public class MembersResource {
     private final MemberDao memberDao;
     private final ProductDao productDao;
 
-    @Inject
+    @Autowired
     public MembersResource(MemberDao memberDao, ProductDao productDao) {
         this.memberDao = memberDao;
         this.productDao = productDao;
