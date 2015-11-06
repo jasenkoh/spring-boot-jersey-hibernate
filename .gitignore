@@ -1,4 +1,8 @@
 *.iml
+
+#Intellij folder
 .idea
+out
+
 target
 build

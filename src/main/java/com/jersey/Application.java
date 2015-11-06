@@ -11,6 +11,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan
@@ -22,6 +25,12 @@ public class Application extends SpringBootServletInitializer {
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(Application.class);
+    }
+
+    @Override
+    public void onStartup(ServletContext servletContext) throws ServletException {
+        servletContext.setInitParameter("contextConfigLocation", "<NONE>");
+        super.onStartup(servletContext);
     }
 
     @Bean
