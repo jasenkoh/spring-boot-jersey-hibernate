@@ -1,14 +1,16 @@
 package com.jersey.resources;
 
 
+import com.jersey.entity.boEntity.Member;
+import com.jersey.entity.daoEntity.MemberEntity;
 import com.jersey.persistance.MemberDao;
 import com.jersey.persistance.ProductDao;
-import com.jersey.representations.Member;
+import com.jersey.service.MembersService;
+import com.jersey.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -19,46 +21,36 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @Component
-@Transactional
 public class MembersResource {
-    private final MemberDao memberDao;
-    private final ProductDao productDao;
+    private final MembersService membersService;
+    private final ProductsService productService;
 
     @Autowired
-    public MembersResource(MemberDao memberDao, ProductDao productDao) {
-        this.memberDao = memberDao;
-        this.productDao = productDao;
+    public MembersResource(MembersService membersService, ProductsService productService) {
+        this.membersService = membersService;
+        this.productService = productService;
     }
     @GET
     public List<Member> getAll(){
-        return this.memberDao.findAll();
+        return this.membersService.getAll();
     }
 
     @GET
     @Path("{id}/products")
     public Member getAllProductsForMember(@PathParam("id")long id) {
-        Member member = memberDao.findOne(id);
-        if (member == null) {
-            throw new WebApplicationException((Response.Status.NOT_FOUND));
-        }
-
-        //Poke products
-        member.getProducts().size();
+        Member member = membersService.getMember(id);
         return member;
     }
 
     @POST
-    public Member save(@Valid Member member){
-        return memberDao.save(member);
+    public Member save(Member member){
+        return membersService.save(member);
     }
 
     @GET
     @Path("{id}")
     public Member getMember(@PathParam("id")long id) {
-        Member member = memberDao.findOne(id);
-        if (member == null) {
-            throw new WebApplicationException((Response.Status.NOT_FOUND));
-        }
+        Member member = membersService.getMember(id);
         return member;
     }
 }

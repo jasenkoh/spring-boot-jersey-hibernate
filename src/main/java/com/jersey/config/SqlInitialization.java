@@ -10,6 +10,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.sql.DataSource;
@@ -32,7 +33,7 @@ public class SqlInitialization{
         public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource());
-        entityManagerFactoryBean.setPackagesToScan("com.jersey.representations");
+        entityManagerFactoryBean.setPackagesToScan("com.jersey.entity.daoEntity");
         entityManagerFactoryBean.setJpaProperties(buildHibernateProperties());
         entityManagerFactoryBean.setJpaProperties(new Properties() {{
             put("hibernate.current_session_context_class", SpringSessionContext.class.getName());

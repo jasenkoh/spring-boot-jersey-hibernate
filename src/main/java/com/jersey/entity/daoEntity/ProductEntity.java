@@ -1,11 +1,13 @@
-package com.jersey.representations;
+package com.jersey.entity.daoEntity;
+
+import com.jersey.entity.boEntity.Product;
 
 import javax.persistence.*;
 import javax.persistence.GeneratedValue;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Product {
+public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,16 +25,26 @@ public class Product {
     @NotNull
     private Long member_id;
 
-    public Product() {
+    public ProductEntity() {
     }
 
-    public Product(Long id, String name, String currency, Double regularPrice, Double discountPrice) {
+    public ProductEntity(Long id, String name, String currency, Double regularPrice, Double discountPrice) {
         this.id = id;
         this.name = name;
         this.currency = currency;
         this.regularPrice = regularPrice;
         this.discountPrice = discountPrice;
     }
+
+    public ProductEntity(Product product) {
+        this.id = product.getId();
+        this.name = product.getName();
+        this.currency = product.getCurrency();
+        this.regularPrice = product.getRegularPrice();
+        this.discountPrice = product.getDiscountPrice();
+        this.member_id = product.getMemberId();
+    }
+
     public Long getId() {
         return id;
     }

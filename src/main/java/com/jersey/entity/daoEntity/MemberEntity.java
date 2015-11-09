@@ -1,11 +1,13 @@
-package com.jersey.representations;
+package com.jersey.entity.daoEntity;
+
+import com.jersey.entity.boEntity.Member;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
-public class Member {
+public class MemberEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,15 +25,21 @@ public class Member {
 
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
-    private Set<Product> products;
+    private Set<ProductEntity> productEntities;
 
-    public Member() {
+    public MemberEntity() {
     }
 
-    public Member(String firstName, String lastName, String email) {
+    public MemberEntity(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+    }
+
+    public MemberEntity(Member member){
+        this.firstName = member.getFirstName();
+        this.lastName = member.getLastName();
+        this.email = member.getEmail();
     }
 
     public Long getId() {
@@ -66,11 +74,11 @@ public class Member {
         this.email = email;
     }
 
-    public Set<Product> getProducts() {
-        return products;
+    public Set<ProductEntity> getProductEntities() {
+        return productEntities;
     }
 
-    public void setProducts(Set<Product> products) {
-        this.products = products;
+    public void setProductEntities(Set<ProductEntity> productEntities) {
+        this.productEntities = productEntities;
     }
 }

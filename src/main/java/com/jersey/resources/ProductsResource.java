@@ -1,12 +1,11 @@
 package com.jersey.resources;
 
+import com.jersey.entity.boEntity.Product;
 import com.jersey.persistance.ProductDao;
-import com.jersey.representations.Product;
+import com.jersey.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
-import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -17,13 +16,12 @@ import java.util.List;
 @Path("/products")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-@Transactional
 @Component
 public class ProductsResource {
-    private ProductDao productDao;
+    private ProductsService productService;
     @Autowired
-    public ProductsResource(ProductDao productDao){
-        this.productDao = productDao;
+    public ProductsResource(ProductsService productService){
+        this.productService = productService;
     }
 
     /**
@@ -32,8 +30,8 @@ public class ProductsResource {
      */
     @GET
     public List<Product> getAll(){
-        List<Product> products = this.productDao.findAll();
-        return products;
+        List<Product> product = this.productService.getAll();
+        return product;
     }
 
     /**
@@ -44,38 +42,38 @@ public class ProductsResource {
     @GET
     @Path("{id}")
     public Product getOne(@PathParam("id")long id) {
-        Product product = productDao.findOne(id);
-        if(product == null){
+        Product Product = productService.getOne(id);
+        if(Product == null){
             throw new WebApplicationException(Response.Status.NOT_FOUND);
         }else {
-            return product;
+            return Product;
         }
     }
 
     /**
      * Create new Product
-     * @param product
+     * @param Product
      * @return new product
      */
     @POST
-    public Product save(@Valid Product product) {
-        return productDao.save(product);
+    public Product save(@Valid Product Product) {
+        return productService.save(Product);
     }
 
     /**
      * Update existing Product
      * @param id
-     * @param product
+     * @param Product
      * @return updated product
      */
     @PUT
     @Path("{id}")
-    public Product update(@PathParam("id")long id, @Valid Product product) {
-        if(productDao.findOne(id) == null){
+    public Product update(@PathParam("id")long id, @Valid Product Product) {
+        if(productService.getOne(id) == null){
             throw new WebApplicationException(Response.Status.NOT_FOUND);
         }else {
-            product.setId(id);
-            return productDao.save(product);
+            Product.setId(id);
+            return productService.save(Product);
         }
     }
 
@@ -86,11 +84,11 @@ public class ProductsResource {
     @DELETE
     @Path("{id}")
     public void delete(@PathParam("id")long id) {
-        Product product = productDao.findOne(id);
+        Product product = productService.getOne(id);
         if(product == null){
             throw new WebApplicationException(Response.Status.NOT_FOUND);
         }else {
-            productDao.delete(product);
+            productService.delete(product.getId());
         }
     }
 }
