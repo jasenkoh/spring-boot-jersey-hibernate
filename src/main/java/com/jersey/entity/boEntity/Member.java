@@ -2,11 +2,6 @@ package com.jersey.entity.boEntity;
 
 import com.google.common.base.Function;
 import com.jersey.entity.daoEntity.MemberEntity;
-import com.jersey.entity.daoEntity.ProductEntity;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.util.Set;
 
 public class Member {
     private Long id;

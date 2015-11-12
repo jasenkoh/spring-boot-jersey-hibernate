@@ -1,4 +1,4 @@
-package com.jersey.service;
+package com.jersey.services;
 
 import com.google.common.collect.Lists;
 import com.jersey.entity.boEntity.Product;

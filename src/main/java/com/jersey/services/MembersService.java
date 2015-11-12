@@ -1,11 +1,8 @@
-package com.jersey.service;
+package com.jersey.services;
 
-import com.google.common.base.Function;
 import com.google.common.collect.Lists;
 import com.jersey.entity.boEntity.Member;
-import com.jersey.entity.boEntity.Product;
 import com.jersey.entity.daoEntity.MemberEntity;
-import com.jersey.entity.daoEntity.ProductEntity;
 import com.jersey.persistance.MemberDao;
 import com.jersey.persistance.ProductDao;
 import org.springframework.beans.factory.annotation.Autowired;

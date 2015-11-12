@@ -1,8 +1,7 @@
 package com.jersey.resources;
 
 import com.jersey.entity.boEntity.Product;
-import com.jersey.persistance.ProductDao;
-import com.jersey.service.ProductsService;
+import com.jersey.services.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

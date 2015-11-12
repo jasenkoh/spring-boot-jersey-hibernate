@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    jndi-name: java:/comp/env/jdbc/demo
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+      naming-strategy: com.jersey.config.SpringNamingStrategy
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+

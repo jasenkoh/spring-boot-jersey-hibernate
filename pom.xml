@@ -35,10 +35,6 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
@@ -48,41 +44,10 @@
 
         <!-- End Spring -->
 
-        <!-- Postgres -->
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>9.3-1102-jdbc41</version>
-        </dependency>
-        <!-- End Postgres -->
-
-        <!--&lt;!&ndash; Jersey &ndash;&gt;-->
-        <!--<dependency>-->
-            <!--<groupId>org.glassfish.jersey.core</groupId>-->
-            <!--<artifactId>jersey-client</artifactId>-->
-            <!--<version>${jersey-version}</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.glassfish.jersey.ext</groupId>-->
-            <!--<artifactId>jersey-spring3</artifactId>-->
-            <!--<version>${jersey-version}</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.glassfish.jersey.ext</groupId>-->
-            <!--<artifactId>jersey-bean-validation</artifactId>-->
-            <!--<version>${jersey-version}</version>-->
-        <!--</dependency>-->
-        <!--&lt;!&ndash; End Jersey &ndash;&gt;-->
-
         <!-- Jackson -->
         <dependency>
             <groupId>com.fasterxml.jackson.jaxrs</groupId>
             <artifactId>jackson-jaxrs-json-provider</artifactId>
-            <version>${jackson-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.datatype</groupId>
-            <artifactId>jackson-datatype-hibernate4</artifactId>
             <version>${jackson-version}</version>
         </dependency>
         <!-- End Jackson -->
@@ -95,15 +60,14 @@
         </dependency>
         <!-- End Guava -->
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.2</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>1.7</source>
+                    <target>1.7</target>
                 </configuration>
             </plugin>
             <plugin>
