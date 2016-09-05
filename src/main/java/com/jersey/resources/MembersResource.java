@@ -1,8 +1,7 @@
 package com.jersey.resources;
 
 
-import com.jersey.persistance.MemberDao;
-import com.jersey.persistance.ProductDao;
+import com.jersey.persistence.MemberDao;
 import com.jersey.representations.Member;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,12 +19,10 @@ import java.util.List;
 @Transactional
 public class MembersResource {
     private final MemberDao memberDao;
-    private final ProductDao productDao;
 
     @Inject
-    public MembersResource(MemberDao memberDao, ProductDao productDao) {
+    public MembersResource(MemberDao memberDao) {
         this.memberDao = memberDao;
-        this.productDao = productDao;
     }
     @GET
     public List<Member> getAll(){

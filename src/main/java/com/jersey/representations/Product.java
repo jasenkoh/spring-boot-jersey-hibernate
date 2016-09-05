@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Products {
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,10 +23,10 @@ public class Products {
     @NotNull
     private Long member_id;
 
-    public Products() {
+    public Product() {
     }
 
-    public Products(Long id, String name, String currency, Double regularPrice, Double discountPrice) {
+    public Product(Long id, String name, String currency, Double regularPrice, Double discountPrice) {
         this.id = id;
         this.name = name;
         this.currency = currency;

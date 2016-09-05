@@ -1,7 +1,7 @@
 package com.jersey.resources;
 
-import com.jersey.persistance.ProductDao;
-import com.jersey.representations.Products;
+import com.jersey.persistence.ProductDao;
+import com.jersey.representations.Product;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,8 +30,8 @@ public class ProductsResource {
      * @return products
      */
     @GET
-    public List<Products> getAll(){
-        List<Products> products = this.productDao.findAll();
+    public List<Product> getAll(){
+        List<Product> products = this.productDao.findAll();
         return products;
     }
 
@@ -42,8 +42,8 @@ public class ProductsResource {
      */
     @GET
     @Path("{id}")
-    public Products getOne(@PathParam("id")long id) {
-        Products product = productDao.findOne(id);
+    public Product getOne(@PathParam("id")long id) {
+        Product product = productDao.findOne(id);
         if(product == null){
             throw new WebApplicationException(Response.Status.NOT_FOUND);
         }else {
@@ -57,7 +57,7 @@ public class ProductsResource {
      * @return new product
      */
     @POST
-    public Products save(@Valid Products product) {
+    public Product save(@Valid Product product) {
         return productDao.save(product);
     }
 
@@ -69,7 +69,7 @@ public class ProductsResource {
      */
     @PUT
     @Path("{id}")
-    public Products update(@PathParam("id")long id, @Valid Products product) {
+    public Product update(@PathParam("id")long id, @Valid Product product) {
         if(productDao.findOne(id) == null){
             throw new WebApplicationException(Response.Status.NOT_FOUND);
         }else {
@@ -85,7 +85,7 @@ public class ProductsResource {
     @DELETE
     @Path("{id}")
     public void delete(@PathParam("id")long id) {
-        Products product = productDao.findOne(id);
+        Product product = productDao.findOne(id);
         if(product == null){
             throw new WebApplicationException(Response.Status.NOT_FOUND);
         }else {
