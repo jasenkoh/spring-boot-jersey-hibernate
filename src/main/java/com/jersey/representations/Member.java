@@ -23,7 +23,7 @@ public class Member {
 
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
-    private Set<Product> products;
+    private Set<Products> products;
 
     public Member() {
     }
@@ -66,11 +66,11 @@ public class Member {
         this.email = email;
     }
 
-    public Set<Product> getProducts() {
+    public Set<Products> getProducts() {
         return products;
     }
 
-    public void setProducts(Set<Product> products) {
+    public void setProducts(Set<Products> products) {
         this.products = products;
     }
 }

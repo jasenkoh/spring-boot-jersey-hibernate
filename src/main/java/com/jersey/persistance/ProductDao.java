@@ -1,8 +1,8 @@
 package com.jersey.persistance;
 
-import com.jersey.representations.Product;
+import com.jersey.representations.Products;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
-public interface ProductDao extends JpaRepository<Product, Long> {
+public interface ProductDao extends JpaRepository<Products, Long> {
 }

@@ -16,8 +16,9 @@
 
     <properties>
         <start-class>com.jersey.Application</start-class>
-        <jersey-version>2.7</jersey-version>
-        <jackson-version>2.4.3</jackson-version>
+        <postgresql-version>9.4.1209.jre7</postgresql-version>
+        <jersey-version>2.23.1</jersey-version>
+        <jackson-version>2.8.1</jackson-version>
     </properties>
 
     <dependencies>
@@ -40,7 +41,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>9.3-1102-jdbc41</version>
+            <version>${postgresql-version}</version>
         </dependency>
         <!-- End Postgres -->
 
